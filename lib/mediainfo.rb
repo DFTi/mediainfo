@@ -465,7 +465,11 @@ class Mediainfo
   
   private
   def mediainfo!
-    @last_command = "#{path} #{@escaped_full_filename} --Output=XML"
+    if @uri.nil?
+      @last_command = "#{path} #{@escaped_full_filename} --Output=XML"
+    else
+      @last_command = "#{path} #{@escaped_uri} --Output=XML"
+    end
     run_command!
   end
   
