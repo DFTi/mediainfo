@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{mediainfo}
-  s.version = "0.7.1.3"
+  s.version = "0.7.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Seth Thomas Rasmussen"]
