@@ -394,7 +394,7 @@ class Mediainfo
     @streams = []
     if full_filename.downcase.start_with?('http') || full_filename.downcase.start_with?('https')
       @uri = URI(full_filename)
-      @escaped_uri = URI.escape(@uri.to_s)
+      @escaped_uri = URI.escape(@uri.to_s).shell_escape_double_quotes
     else
       @uri           = nil
       @full_filename = File.expand_path full_filename
@@ -467,7 +467,6 @@ class Mediainfo
   
   private
   def mediainfo!
-    puts @uri
 
     if @uri.nil?
       @last_command = "#{path} #{@escaped_full_filename} --Output=XML"
