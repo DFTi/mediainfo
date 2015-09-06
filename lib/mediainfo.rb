@@ -1,6 +1,7 @@
 require "forwardable"
 require "mediainfo/string"
 require "mediainfo/attr_readers"
+require "uri"
 
 =begin
 # Mediainfo
@@ -469,6 +470,7 @@ class Mediainfo
       @last_command = "#{path} #{@escaped_full_filename} --Output=XML"
     else
       @last_command = "#{path} #{@escaped_uri} --Output=XML"
+      puts @last_command
     end
     run_command!
   end
