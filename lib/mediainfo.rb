@@ -389,19 +389,22 @@ class Mediainfo
         "Your version of mediainfo, #{mediainfo_version}, " +
         "is not compatible with this gem. >= 0.7.25 required."
     end
-    
+
     @streams = []
-    
-    if full_filename
+    if full_filename.downcase.start_with?('http') || full_filename.downcase.start_with('https')
+      @uri = URI(full_filename)
+      @escaped_uri = URI.escape(@uri.to_s)
+    else
+      @uri           = nil
       @full_filename = File.expand_path full_filename
       @path          = File.dirname  @full_filename
       @filename      = File.basename @full_filename
-      
+
       raise ArgumentError, "need a path to a video file, got nil" unless @full_filename
       raise ArgumentError, "need a path to a video file, #{@full_filename} does not exist" unless File.exist? @full_filename
-      
+
       @escaped_full_filename = @full_filename.shell_escape_double_quotes
-      
+
       self.raw_response = mediainfo!
     end
   end
