@@ -393,7 +393,6 @@ class Mediainfo
 
     @streams = []
     if full_filename.downcase.start_with?('http') || full_filename.downcase.start_with?('https')
-      puts 'here'
       @uri = URI(full_filename)
       @escaped_uri = URI.escape(@uri.to_s)
     else
@@ -407,8 +406,9 @@ class Mediainfo
 
       @escaped_full_filename = @full_filename.shell_escape_double_quotes
 
-      self.raw_response = mediainfo!
     end
+
+    self.raw_response = mediainfo!
   end
   
   def raw_response=(response)
