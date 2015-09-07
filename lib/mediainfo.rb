@@ -393,8 +393,8 @@ class Mediainfo
 
     @streams = []
     if full_filename.downcase.start_with?('http') || full_filename.downcase.start_with?('https')
-      @uri = URI(full_filename)
-      @escaped_uri = full_filename
+      @uri = Shellwords.escape(full_filename)
+      @escaped_uri = @uri
     else
       @uri           = nil
       @full_filename = File.expand_path full_filename
