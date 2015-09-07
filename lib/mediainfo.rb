@@ -471,7 +471,7 @@ class Mediainfo
     if @uri.nil?
       @last_command = "#{path} #{@escaped_full_filename} --Output=XML"
     else
-      @last_command = "#{path} #{@escaped_uri} --Output=XML"
+      @last_command = "#{path} #{@uri} --Output=XML"
     end
     puts @last_command
     run_command!
