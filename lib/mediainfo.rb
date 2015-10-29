@@ -220,6 +220,9 @@ class Mediainfo
     mediainfo_date_reader :encoded_date
   end
 
+  class OtherStream < Stream
+  end
+
   class VideoStream < Stream
     mediainfo_attr_reader :stream_id, "ID"
 
